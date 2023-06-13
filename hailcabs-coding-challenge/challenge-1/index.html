@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <title>Hailcabs Coding Challenge | Challenge 1</title>
+
+    <script src="./include.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://kit.fontawesome.com/b5224cde7c.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style type="text/tailwindcss">
+      @layer base {
+        a:hover {
+          @apply underline;
+        }
+      }
+
+      @layer utilities {
+        .btn {
+          @apply px-6 py-3 font-medium rounded-lg shadow hover:shadow-lg active:shadow-inner;
+        }
+
+        .btn-primary {
+          @apply text-white bg-gradient-to-r from-blue-500 to-blue-600 shadow-blue-500;
+        }
+
+        .btn-xl {
+          @apply px-10 py-6 text-xl;
+        }
+
+        .btn-2xl {
+          @apply px-12 py-6 text-2xl;
+        }
+
+        .card {
+          @apply px-8 pt-14 pb-12 bg-white rounded-2xl min-w-[24rem] max-w-sm space-y-10;
+        }
+
+        .card-heading {
+          @apply text-2xl text-gray-800 font-bold;
+        }
+
+        .card-paragraph {
+          @apply font-medium text-slate-400;
+        }
+
+        .card-btn {
+          @apply btn btn-primary btn-xl w-full flex justify-between items-center;
+        }
+
+        .chip {
+          @apply px-3 py-1 text-lg font-medium bg-gray-200 rounded-lg text-slate-500;
+        }
+
+        .eyebrow {
+          @apply text-blue-500 font-bold uppercase;
+        }
+      }
+    </style>
+  </head>
+  <body class="max-w-screen-xl mx-auto bg-gray-100">
+    <!-- Page Header (AppBar) -->
+    <header class="px-10 py-6 flex justify-between">
+      <!-- Navigation -->
+      <nav class="text-gray-800 flex items-center gap-12">
+        <a href="#">
+          <img class="w-14 aspect-square" src="./assets/logo.png" alt="logo" />
+        </a>
+        <ul class="flex gap-8 font-medium">
+          <li><a href="#library">Library</a></li>
+          <li><a href="#subjects">Subjects</a></li>
+          <li><a href="#">Paths</a></li>
+        </ul>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex gap-4 items-center">
+        <button class="btn">Sign in</button>
+        <button class="btn btn-primary">Join Pro</button>
+      </div>
+    </header>
+
+    <!-- Page Main -->
+    <main class="px-10">
+      <!-- Welcome -->
+      <section
+        class="min-h-[calc(100vh-110px)] text-center flex flex-col items-center justify-center gap-12 relative"
+      >
+        <h1 class="text-6xl font-bold text-gray-800">
+          Ready to build <br />
+          something awesome?
+        </h1>
+        <p class="text-2xl card-paragraph">
+          We create practical screencasts for awesome developers.
+        </p>
+        <input
+          id="search"
+          name="search"
+          type="search"
+          placeholder="| Search our library, e.g. Learn React"
+          class="px-10 py-6 min-w-[45rem] w-3/4 text-3xl border-2 border-gray-200 rounded-lg shadow-lg focus:border-blue-500 outline-none"
+        />
+        <div class="w-20 h-2 bg-blue-400 absolute left-0 bottom-0"></div>
+      </section>
+
+      <!-- Projects -->
+      <section id="library" class="py-16 flex items-end justify-between gap-12">
+        <div class="max-w-4xl space-y-8">
+          <h2 class="text-4xl font-bold text-gray-800">
+            Practical project to get you ahead.
+          </h2>
+          <p class="text-xl card-paragraph">
+            Rather than just teaching theory, we focus on real code to inspire
+            your next project. Learning should be boring so let's have some fun.
+          </p>
+        </div>
+
+        <button
+          class="btn btn-primary btn-2xl whitespace-nowrap"
+          onclick="document.getElementById('search').focus()"
+        >
+          <i class="fa fa-magnifying-glass"></i>
+          Browse Library
+        </button>
+      </section>
+
+      <!-- Testimonial -->
+      <section
+        class="px-32 py-24 flex items-center gap-10 bg-blue-100 rounded-xl"
+      >
+        <img
+          src="./assets/testimony-1.avif"
+          class="w-[124px] aspect-square rounded-full object-cover object-top"
+        />
+        <div>
+          <p class="text-xl text-slate-400 font-medium">
+            My career started as a designer. Out of necessity I needed to learn
+            how to handle entire stack. Codecourse took me from basically no
+            knowledge of development to being able to handle every aspect of it.
+          </p>
+
+          <p class="my-4 text-lg text-slate-400 font-bold">
+            Josh Stobbs, Ontario, Canada anvildesigne.ca
+          </p>
+        </div>
+      </section>
+
+      <!-- Subjects -->
+      <section id="subjects" class="py-24 flex items-center gap-14">
+        <div class="min-w-fit">
+          <h2 class="text-4xl font-bold text-gray-800">Latest Content</h2>
+          <p class="my-4 text-xl font-medium text-slate-400">
+            Fresh from the library
+          </p>
+          <button class="my-8 text-2xl text-blue-500">
+            Browse everything <i class="fa fa-arrow-right-long"></i>
+          </button>
+        </div>
+
+        <!-- Lecture List -->
+        <div class="flex gap-10 overflow-hidden">
+          <!-- Card 1 -->
+          <article class="card">
+            <div>
+              <span class="eyebrow">Pro only</span>
+              <h4 class="card-heading">Super Fast Data Nesting</h4>
+            </div>
+            <p class="card-paragraph">
+              Nesting huge amount of data like comments? Here's a unique
+              technique combining API data and frontend logic to make it a
+              breeze.
+            </p>
+            <div class="flex gap-4">
+              <span class="chip">Laravel</span>
+              <span class="chip">Vuex</span>
+            </div>
+            <button class="card-btn">
+              Watch Now <i class="fa-solid fa-circle-play"></i>
+            </button>
+          </article>
+          <!-- Card 2 -->
+          <article class="card">
+            <div>
+              <span class="eyebrow">Pro only</span>
+              <h4 class="card-heading">Super Fast Data Nesting</h4>
+            </div>
+            <p class="card-paragraph">
+              Nesting huge amount of data like comments? Here's a unique
+              technique combining API data and frontend logic to make it a
+              breeze.
+            </p>
+            <div class="flex gap-4">
+              <span class="chip">Laravel</span>
+              <span class="chip">Vuex</span>
+            </div>
+            <button class="card-btn">
+              Watch Now <i class="fa-solid fa-circle-play"></i>
+            </button>
+          </article>
+          <!-- Card 3 -->
+          <article class="card">
+            <div>
+              <span class="eyebrow">Pro only</span>
+              <h4 class="card-heading">Super Fast Data Nesting</h4>
+            </div>
+            <p class="card-paragraph">
+              Nesting huge amount of data like comments? Here's a unique
+              technique combining API data and frontend logic to make it a
+              breeze.
+            </p>
+            <div class="flex gap-4">
+              <span class="chip">Laravel</span>
+              <span class="chip">Vuex</span>
+            </div>
+            <button class="card-btn">
+              Watch Now <i class="fa-solid fa-circle-play"></i>
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Unlimited Access Plan -->
+      <section
+        class="px-32 py-16 grid grid-cols-3 gap-10 bg-blue-500 rounded-xl"
+      >
+        <div class="space-y-12 col-span-2">
+          <h2 class="text-4xl font-bold text-white leading-relaxed">
+            Unlimited access to <br />
+            everything with <br />
+            pro membership.
+          </h2>
+          <p class="text-white">
+            For the price of a few coffees a month you get access to our entire
+            library of content, and more.
+          </p>
+        </div>
+        <button
+          class="btn btn-xl bg-white text-blue-500 place-self-center !px-16 !py-3"
+        >
+          See Plans
+        </button>
+      </section>
+    </main>
+  </body>
+</html>
