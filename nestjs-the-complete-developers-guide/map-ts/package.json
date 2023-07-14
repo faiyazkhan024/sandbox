@@ -1,0 +1,18 @@
+{
+  "name": "map-ts",
+  "version": "1.0.0",
+  "description": "It is a TypeScript project that utilizes the Google Maps JavaScript API to build a map and add a custom marker to it",
+  "author": "Faiyaz Khan",
+  "license": "MIT",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "latest",
+    "@types/google.maps": "latest",
+    "parcel": "latest",
+    "typescript": "latest"
+  }
+}
