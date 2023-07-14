@@ -72,11 +72,11 @@ The project follows a standard structure for a TypeScript project. Here's an ove
  ├── `src/` : Contains the project's source code.  
  │ ├── `app.ts` : Main script being called in index.html.  
  │ ├── `Company.ts` : Handles company initialization.  
- │ ├── `Map.ts` : : Handles map initialization and marker creation.  
+ │ ├── `Map.ts` : Handles map initialization and marker creation.  
  │ └── `User.ts` : Handles user initialization.  
  ├── `.gitignore` : Specifies files and directories to ignore in Git.  
  ├── `index.html` : Entry point of the application.  
- ├── `main.css` : # CSS styles for the app.  
+ ├── `main.css` : CSS styles for the app.  
  ├── `package.json` : Project dependencies and scripts.  
  ├── `README.md` : Project documentation.  
  └── `tsconfig.json` : TypeScript configuration file.
