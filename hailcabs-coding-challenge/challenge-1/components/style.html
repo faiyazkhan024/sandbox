@@ -1,0 +1,49 @@
+<style type="text/tailwindcss">
+  @layer base {
+    a:hover {
+      @apply underline;
+    }
+  }
+
+  @layer utilities {
+    .btn {
+      @apply px-6 py-3 font-medium rounded-lg shadow hover:shadow-lg active:shadow-inner;
+    }
+
+    .btn-primary {
+      @apply text-white bg-gradient-to-r from-blue-500 to-blue-600 shadow-blue-500;
+    }
+
+    .btn-xl {
+      @apply px-10 py-6 text-xl;
+    }
+
+    .btn-2xl {
+      @apply px-12 py-6 text-2xl;
+    }
+
+    .card {
+      @apply px-8 pt-14 pb-12 bg-white rounded-2xl min-w-[24rem] max-w-sm space-y-10;
+    }
+
+    .card-heading {
+      @apply text-2xl text-gray-800 font-bold;
+    }
+
+    .card-paragraph {
+      @apply font-medium text-slate-400;
+    }
+
+    .card-btn {
+      @apply btn btn-primary btn-xl w-full flex justify-between items-center;
+    }
+
+    .chip {
+      @apply px-3 py-1 text-lg font-medium bg-gray-200 rounded-lg text-slate-500;
+    }
+
+    .eyebrow {
+      @apply text-blue-500 font-bold uppercase;
+    }
+  }
+</style>
