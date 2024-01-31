@@ -10,52 +10,14 @@
       src="https://kit.fontawesome.com/b5224cde7c.js"
       crossorigin="anonymous"
     ></script>
+    <script src="./scripts/dynamicComponentImporter.js"></script>
 
-    <TailwindStyle import="./components/style.html"></TailwindStyle>
+    <tailwind-style import="./components/style.html"></tailwind-style>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <title>Hailcabs Coding Challenge | Challenge 1</title>
   </head>
   <body class="max-w-screen-xl mx-auto bg-gray-100">
-    <!-- Page Header (AppBar) -->
-    <AppBar import="./components/app-bar.html"></AppBar>
-
-    <!-- Page Main -->
-    <main class="px-10">
-      <!-- Welcome -->
-      <Welcome import="./components/welcome.html"></Welcome>
-
-      <!-- Projects -->
-      <Projects import="./components/projects.html"></Projects>
-
-      <!-- Testimony 1 -->
-      <Testimony1 import="./components/testimony-1.html"></Testimony1>
-
-      <!-- Subjects -->
-      <Subjects import="./components/subjects.html"></Subjects>
-
-      <!-- Unlimited Access Plan -->
-      <UnlimitedPlan import="./components/unlimited-plan.html"></UnlimitedPlan>
-
-      <!-- Featured Content -->
-      <FeaturedContent
-        import="./components/featured-content.html"
-      ></FeaturedContent>
-
-      <!-- Testimony 2 -->
-      <Testimony2 import="./components/testimony-2.html"></Testimony2>
-
-      <!-- Footer 1 -->
-      <Footer1 import="./components/footer-1.html"></Footer1>
-
-      <!-- Footer 2 -->
-      <Footer2 import="./components/footer-2.html"></Footer2>
-    </main>
-
-    <script
-      src="./scripts/components.js"
-      type="text/javascript"
-      deffer
-    ></script>
+    <app import="./app.html"></app>
   </body>
 </html>
