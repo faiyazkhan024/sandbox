@@ -1,5 +1,11 @@
 const scriptTag = document.currentScript;
 
+const textToHtml = (text, selector) => {
+  const parser = new DOMParser();
+  const html = parser.parseFromString(text, "text/html");
+  return html.querySelector(selector) ?? html;
+};
+
 const logError = (error) => {
   console.error(
     `Error importing component from ${error.url}:\n`,
@@ -10,32 +16,28 @@ const logError = (error) => {
   );
 };
 
-const getFallbackOrErrorComponent = async (element) => {
-  let fallbackOrErrorUrl;
-
+const getFallbackOrErrorUrl = (element) => {
   if (element.hasAttribute("fallback")) {
-    fallbackOrErrorUrl = element.getAttribute("fallback");
-  } else if (element.hasAttribute("error")) {
-    fallbackOrErrorUrl = element.getAttribute("error");
-  } else if (scriptTag.hasAttribute("fallback")) {
-    fallbackOrErrorUrl = scriptTag.getAttribute("fallback");
-  } else if (scriptTag.hasAttribute("error")) {
-    fallbackOrErrorUrl = scriptTag.getAttribute("error");
+    return element.getAttribute("fallback");
   }
-
-  if (!fallbackOrErrorUrl) return "";
-  const response = await fetch(fallbackOrErrorUrl);
-  return response.ok ? response.text() : "";
+  if (element.hasAttribute("error")) {
+    return element.getAttribute("error");
+  }
+  if (scriptTag.hasAttribute("fallback")) {
+    return scriptTag.getAttribute("fallback");
+  }
+  if (scriptTag.hasAttribute("error")) {
+    return scriptTag.getAttribute("error");
+  }
+  return null;
 };
 
 const fetchComponent = async (url) => {
   const response = await fetch(url);
 
   if (!response.ok) {
-    const responseBody = await response.text();
-    const preElement = new DOMParser()
-      .parseFromString(responseBody, "text/html")
-      .querySelector("pre");
+    const responseText = await response.text();
+    const preElement = textToHtml(responseText, "pre");
     const error = new Error();
     error.url = url;
     error.response = response;
@@ -46,19 +48,30 @@ const fetchComponent = async (url) => {
   return response.text();
 };
 
+const handleError = async (error, element) => {
+  const foeUrl = getFallbackOrErrorUrl(element);
+  if (!foeUrl) return element.remove();
+
+  const foeComponent = await fetchComponent(foeUrl);
+  const foeHtml = textToHtml(foeComponent, "body");
+  const errorMessageTag = foeHtml.querySelector("[data-error-message]");
+  if (errorMessageTag) errorMessageTag.innerHTML = error.message;
+  element.outerHTML = foeHtml.innerHTML;
+};
+
 const importComponents = async () => {
   let elements = document.querySelectorAll("[import]");
 
   while (elements.length > 0) {
     await Promise.all(
       Array.from(elements).map(async (element) => {
-        const url = element.getAttribute("import");
         try {
-          const component = await fetchComponent(url);
-          element.outerHTML = component;
+          element.outerHTML = await fetchComponent(
+            element.getAttribute("import")
+          );
         } catch (error) {
-          element.outerHTML = await getFallbackOrErrorComponent(element);
           logError(error);
+          await handleError(error, element);
         }
       })
     );
@@ -67,10 +80,10 @@ const importComponents = async () => {
   }
 };
 
-const components = () => {
+const main = () => {
   if (document.readyState === "complete") {
     importComponents();
   }
 };
 
-document.onreadystatechange = components;
+document.onreadystatechange = main;
