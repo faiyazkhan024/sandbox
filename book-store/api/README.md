@@ -4,16 +4,18 @@ The Book Store API is a RESTful web service that allows users to create an accou
 
 ## Table of Contents
 
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Deployment](#deployment)
-- [Testing](#testing)
-- [Troubleshooting](#troubleshooting)
-- [About Stack](#about-stack)
-- [Configuration](#configuration)
-- [License](#license)
+- [Book Store API](#book-store-api)
+  - [Table of Contents](#table-of-contents)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Project Structure](#project-structure)
+  - [Deployment](#deployment)
+  - [Testing](#testing)
+  - [Troubleshooting](#troubleshooting)
+  - [About Stack](#about-stack)
+  - [Configuration](#configuration)
+  - [License](#license)
 
 ## Prerequisites
 
@@ -209,4 +211,4 @@ The Book Store API can be configured using environment variables. The following 
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
