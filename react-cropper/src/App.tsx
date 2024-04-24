@@ -1,25 +1,17 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import Cropper, { ReactCropperElement } from "react-cropper";
-
-import floorPlan from "./assets/floor-plan.png";
 import "cropperjs/dist/cropper.css";
 
+import floorPlan from "./assets/floor-plan.png";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import classes from "./App.module.css";
+
 const App = () => {
-  const inputRef = useRef<HTMLInputElement>(null);
   const cropperRef = useRef<ReactCropperElement>(null);
   const [imgUrl, setImgUrl] = useState(floorPlan);
   const [preview, setPreview] = useState("");
   const [cropData, setCropData] = useState({ x: 0, y: 0, width: 0, height: 0 });
-
-  const handleImage = (event: ChangeEvent<HTMLInputElement>) => {
-    const reader = new FileReader();
-    reader.addEventListener("load", () => setImgUrl(reader.result as string));
-    const target = event.target as HTMLInputElement;
-    const files = target.files as FileList;
-    reader.readAsDataURL(files[0]);
-  };
-
-  const onUpload = () => inputRef.current?.click();
 
   const onCrop = () => {
     const cropper = cropperRef.current?.cropper;
@@ -32,22 +24,10 @@ const App = () => {
 
   return (
     <>
-      <header className="appBar">
-        <h1>Image Playground</h1>
-        <input
-          type="file"
-          ref={inputRef}
-          accept="image/*"
-          style={{ display: "none" }}
-          onChange={handleImage}
-        />
-        <button className="btn" onClick={onUpload}>
-          Upload Image
-        </button>
-      </header>
+      <Header setImgUrl={setImgUrl} />
 
-      <div className="app">
-        <main className="canvas">
+      <div className={classes.app}>
+        <main className={classes.canvas}>
           <Cropper
             ref={cropperRef}
             src={imgUrl}
@@ -62,38 +42,7 @@ const App = () => {
           />
         </main>
 
-        <aside>
-          <div className="preview">
-            {preview ? (
-              <img src={preview} alt="Preview" />
-            ) : (
-              <div className="no-preview">No Preview</div>
-            )}
-          </div>
-
-          <div className="data-group">
-            <div className="data">
-              <span className="text">X</span>
-              <span className="val">{cropData.x.toFixed(2)}</span>
-              <span className="text">px</span>
-            </div>
-            <div className="data">
-              <span className="text">Y</span>
-              <span className="val">{cropData.y.toFixed(2)}</span>
-              <span className="text">px</span>
-            </div>
-            <div className="data">
-              <span className="text">Width</span>
-              <span className="val">{cropData.width.toFixed(2)}</span>
-              <span className="text">px</span>
-            </div>
-            <div className="data">
-              <span className="text">Height</span>
-              <span className="val">{cropData.height.toFixed(2)}</span>
-              <span className="text">px</span>
-            </div>
-          </div>
-        </aside>
+        <Sidebar preview={preview} cropData={cropData} />
       </div>
     </>
   );

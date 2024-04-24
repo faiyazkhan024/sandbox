@@ -1,0 +1,22 @@
+.cropData {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--secondary_dark);
+  border-radius: 0.2rem;
+}
+
+.text,
+.val {
+  padding: 0.25rem 0.5rem;
+}
+
+.val {
+  flex: 1 1 auto;
+}
+
+.text {
+  min-width: 4rem;
+  background-color: var(--secondary);
+}
