@@ -1,8 +1,15 @@
 # Sandbox
 
-Sandbox is like a treasure trove of different projects that I've created while playing around with new programming languages, packages, frameworks, and features. In this repository, you'll find all sorts of cool stuff - assignments from recruiters, tutorials that I've followed, and other fun projects that don't belong to any specific bigger project.
+Sandbox is like a treasure trove of different projects that I've created while exploring new programming languages, packages, frameworks, and features. This repository serves as a showcase of my programming skills and contains:
 
-**All these projects are there to showcase my programming skills, and I hope you'll find them fun and informative!**
+- Assignments from recruiters
+- Tutorials I've followed
+- Fun projects that don't belong to any specific larger project
+
+**I hope you find these projects both enjoyable and informative!**
+
+![GitHub license](https://img.shields.io/github/license/faiyazkhan024/sandbox)
+![GitHub last commit](https://img.shields.io/github/last-commit/faiyazkhan024/sandbox)
 
 ## Table of Contents
 
