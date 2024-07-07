@@ -55,6 +55,13 @@ Each project is self-contained and can be used independently to learn and practi
 
 > **Feel free to explore multiple projects and dive deeper into different aspects of NestJS development. Modify the code, experiment with different techniques, and build upon the projects to reinforce your knowledge and skills.**
 
+## Prerequisites
+
+Before running any of the projects, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version >= 14.x)
+- [NestJS CLI](https://nestjs.com/)
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](../LICENSE) file for details.
