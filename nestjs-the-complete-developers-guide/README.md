@@ -5,6 +5,7 @@ This folder contains all the projects associated with the course "[NestJS: The C
 ## Table of Contents
 
 - [About](#about)
+- [Prerequisites](#prerequisites)
 - [Get Started](#get-started)
 - [Usage](#usage)
 - [License](#license)
@@ -22,6 +23,13 @@ Each project within this folder serves as a practical implementation of concepts
 - Deploying NestJS applications
 
 You can use these projects to learn and practice NestJS development techniques and deepen your understanding of the framework. Each project focuses on specific topics and provides step-by-step instructions and code samples to guide you through the implementation.
+
+## Prerequisites
+
+Before running any of the projects, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version >= 14.x)
+- [NestJS CLI](https://nestjs.com/)
 
 ## Get Started
 
@@ -54,13 +62,6 @@ Each project is self-contained and can be used independently to learn and practi
 2. Follow the instructions in the project's README.md file to set up and run the project.
 
 > **Feel free to explore multiple projects and dive deeper into different aspects of NestJS development. Modify the code, experiment with different techniques, and build upon the projects to reinforce your knowledge and skills.**
-
-## Prerequisites
-
-Before running any of the projects, ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) (version >= 14.x)
-- [NestJS CLI](https://nestjs.com/)
 
 ## License
 
