@@ -134,4 +134,4 @@ No sub-project shares history or dependencies with another, ensuring a clean and
 
 ## License
 
-This repository and all its projects are licensed under the [MIT License](LICENSE). Feel free to explore, fork, and use the projects for your own learning and experimentation.
+This repository and all its projects are licensed under the [MIT License](./LICENSE). Feel free to explore, fork, and use the projects for your own learning and experimentation.
