@@ -1,0 +1,33 @@
+name: Feature Request
+description: Suggest an idea for this project
+labels: ["New Feature"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please fill out the sections below to help us understand your request.
+
+  - type: input
+    id: feature
+    attributes:
+      label: "Feature"
+      placeholder: Short description of the feature
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: Detailed description of the feature
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Benefits
+      placeholder: Why this feature is beneficial
+    validations:
+      required: true
