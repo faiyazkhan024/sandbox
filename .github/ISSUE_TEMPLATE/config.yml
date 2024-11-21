@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: ❓ Ask a Question
+    url: https://github.com/faiyazkhan024/sandbox/discussions
+    about: Use this link if you have a question about this project.
+  - name: 🔐 Report a Security Vulnerability
+    url: https://github.com/faiyazkhan024/sandbox/security/advisories
+    about: Report security vulnerabilities privately via this link.
