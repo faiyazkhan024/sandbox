@@ -4,14 +4,14 @@
 
 name: Node.js Build and Deploy
 
+# Trigger on manual event to prevent automatic execution
 on:
-  push:
-    branches:
-      - "**" # Trigger on push to any branch
+  workflow_dispatch: # Allows the workflow to be triggered manually
 
 jobs:
   check-nodejs-project:
     runs-on: ubuntu-latest
+    if: false # Prevents the job from running
 
     steps:
       # Checkout the code
@@ -33,7 +33,7 @@ jobs:
   nodejs-build:
     needs: check-nodejs-project
     runs-on: ubuntu-latest
-    if: env.is_nodejs == 'true'
+    if: false # Prevents the job from running
 
     steps:
       # Checkout the code
@@ -70,7 +70,7 @@ jobs:
             git checkout build
           else
             git checkout --orphan build
-            git rm -rf .
+            git rm -rf .  # Remove files in the orphan branch
           fi
 
       # Sync the build folder with the branch-specific build directory
