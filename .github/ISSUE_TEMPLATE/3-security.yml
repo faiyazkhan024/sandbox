@@ -1,4 +1,4 @@
-name: Security Report
+name: 🔐 Security Report
 description: Report a security vulnerability in the project.
 title: "[Security]: "
 labels: ["security", "vulnerability"]
