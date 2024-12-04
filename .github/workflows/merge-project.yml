@@ -61,18 +61,14 @@ jobs:
           # Create the project folder
           mkdir -p projects/$PROJECT_NAME
 
+          ls -a
+
           # Enable extended globbing and move the files (excluding 'projects' folder itself)
           shopt -s dotglob extglob
           mv -- !(".git", "projects",) projects/$PROJECT_NAME || echo "No files to move"
           shopt -u extglob
 
           ls -a
-
-          # Ensure we're in the correct Git repository context
-          if [ ! -d ".git" ]; then
-            echo "Not in a Git repository"
-            exit 1
-          fi
 
           # Add the changes and commit them
           git add projects/$PROJECT_NAME || echo "Nothing to add"
