@@ -65,7 +65,7 @@ jobs:
 
           # Enable extended globbing and move the files (excluding 'projects' folder itself)
           shopt -s dotglob extglob
-          mv -- !(".git", "projects",) projects/$PROJECT_NAME || echo "No files to move"
+          mv -- !(".git" | "projects",) projects/$PROJECT_NAME || echo "No files to move"
           shopt -u extglob
 
           ls -a
