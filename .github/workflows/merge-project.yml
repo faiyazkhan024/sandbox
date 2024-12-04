@@ -41,7 +41,7 @@ jobs:
       - name: Fetch and Checkout the Orphan Branch
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
-                    if ! git ls-remote --exit-code origin $BRANCH_NAME; then
+          if ! git ls-remote --exit-code origin $BRANCH_NAME; then
             echo "Branch $BRANCH_NAME does not exist."
             exit 1
           fi
@@ -61,14 +61,10 @@ jobs:
           # Create the project folder
           mkdir -p projects/$PROJECT_NAME
 
-          ls -a
-
           # Enable extended globbing and move the files (excluding 'projects' folder itself)
           shopt -s dotglob extglob
           mv -- !(.git|projects) projects/$PROJECT_NAME || echo "No files to move"
           shopt -u extglob
-
-          ls -a
 
           # Add the changes and commit them
           git add projects/$PROJECT_NAME || echo "Nothing to add"
@@ -80,15 +76,11 @@ jobs:
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
 
-          # Ensure we're in the correct repository
-          if [ ! -d ".git" ]; then
-            echo "Not in a Git repository"
-            exit 1
-          fi
-
           # Checkout main and merge the orphan project
           git checkout main
           git checkout $BRANCH_NAME -- projects/$PROJECT_NAME
           git add projects/$PROJECT_NAME || echo "Nothing to add"
           git commit -m "Add $PROJECT_NAME project from $BRANCH_NAME"
-          git push origin main
+
+          # Use GitHub Token for authentication
+          git push https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git main
