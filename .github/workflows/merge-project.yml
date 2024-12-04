@@ -41,6 +41,11 @@ jobs:
       - name: Fetch and Checkout the Orphan Branch
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
+                    if ! git ls-remote --exit-code origin $BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME does not exist."
+            exit 1
+          fi
+
           PROJECT_NAME=$(basename $BRANCH_NAME)
 
           # Fetch the branch to ensure it exists
@@ -58,7 +63,7 @@ jobs:
 
           # Enable extended globbing and move the files (excluding 'projects' folder itself)
           shopt -s dotglob extglob
-          mv -- !("projects") projects/$PROJECT_NAME || echo "No files to move"
+          mv !("projects") projects/$PROJECT_NAME || echo "No files to move"
           shopt -u extglob
 
           # Add the changes and commit them
