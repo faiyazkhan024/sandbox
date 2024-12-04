@@ -25,7 +25,15 @@
 
   "typescript.tsdk": "node_modules/typescript/lib",
 
-  "cSpell.words": ["docstates", "hailcabs", "njsproj", "ntvs", "spehre"],
+  "cSpell.words": [
+    "docstates",
+    "dotglob",
+    "hailcabs",
+    "njsproj",
+    "ntvs",
+    "shopt",
+    "spehre"
+  ],
 
   "[css]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

@@ -52,10 +52,15 @@ jobs:
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
 
+          # Create the project folder
           mkdir -p projects/$PROJECT_NAME
+
+          # Avoid moving the 'projects' folder itself
           shopt -s dotglob
-          mv -- * projects/$PROJECT_NAME || echo "No files to move"
+          mv -- !("projects") projects/$PROJECT_NAME || echo "No files to move"
           shopt -u dotglob
+
+          # Add the changes and commit them
           git add projects/$PROJECT_NAME || echo "Nothing to add"
           git commit -m "Prepare $PROJECT_NAME for merging into main" || echo "Commit already exists"
 
@@ -63,6 +68,12 @@ jobs:
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
+
+          # Ensure we're in the correct repository
+          if [ ! -d ".git" ]; then
+            echo "Not in a Git repository"
+            exit 1
+          fi
 
           git checkout main
           git checkout $BRANCH_NAME -- projects/$PROJECT_NAME
