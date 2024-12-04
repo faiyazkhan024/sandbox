@@ -13,14 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Step 1: Checkout the repository to make sure we're in the correct context
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      # Step 2: Configure Git Identity for the commit
       - name: Configure Git Identity
         run: |
           git config --global user.email "faiyazkhan024@gmail.com"
           git config --global user.name "Faiyaz Khan"
 
+      # Step 3: Ensure Projects Folder Exists in Main
       - name: Ensure Projects Folder Exists in Main
         run: |
           git fetch origin main
@@ -34,20 +37,18 @@ jobs:
             echo "Projects folder already exists, no commit needed"
           fi
 
-      - name: Fetch the branch and switch
+      # Step 4: Fetch the branch and switch
+      - name: Fetch and Checkout the Orphan Branch
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
-          if ! git ls-remote --exit-code origin $BRANCH_NAME; then
-            echo "Branch $BRANCH_NAME does not exist."
-            exit 1
-          fi
-
           PROJECT_NAME=$(basename $BRANCH_NAME)
 
+          # Fetch the branch to ensure it exists
           git fetch origin $BRANCH_NAME
           git checkout $BRANCH_NAME
 
-      - name: Create the project folder and move its contents
+      # Step 5: Create the project folder and move the files
+      - name: Create the Project Folder and Move Files
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
@@ -64,7 +65,8 @@ jobs:
           git add projects/$PROJECT_NAME || echo "Nothing to add"
           git commit -m "Prepare $PROJECT_NAME for merging into main" || echo "Commit already exists"
 
-      - name: Switch back to main and merge the project
+      # Step 6: Switch back to main and merge the project
+      - name: Switch Back to Main and Merge the Project
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
@@ -75,6 +77,7 @@ jobs:
             exit 1
           fi
 
+          # Checkout main and merge the orphan project
           git checkout main
           git checkout $BRANCH_NAME -- projects/$PROJECT_NAME
           git add projects/$PROJECT_NAME || echo "Nothing to add"
