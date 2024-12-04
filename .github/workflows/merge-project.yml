@@ -58,12 +58,6 @@ jobs:
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
 
-          # Ensure we're in the correct Git repository context
-          if [ ! -d ".git" ]; then
-            echo "Not in a Git repository 1"
-            exit 1
-          fi
-
           # Create the project folder
           mkdir -p projects/$PROJECT_NAME
 
@@ -72,9 +66,11 @@ jobs:
           mv -- !("projects") projects/$PROJECT_NAME || echo "No files to move"
           shopt -u extglob
 
+          ls
+
           # Ensure we're in the correct Git repository context
           if [ ! -d ".git" ]; then
-            echo "Not in a Git repository 2"
+            echo "Not in a Git repository"
             exit 1
           fi
 
