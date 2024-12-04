@@ -4,43 +4,46 @@ on:
   workflow_dispatch:
     inputs:
       branch_name:
-        description: 'Branch to merge (e.g., assignment/multi-level-dropdowns)'
+        description: "Branch to merge (e.g., assignment/multi-level-dropdowns)"
         required: true
-        default: ''
+        default: ""
 
 jobs:
   merge_project:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Ensure Projects Folder Exists
-      run: |
-        git fetch origin main
-        git checkout main
-        mkdir -p projects
-        git add projects
-        git commit -m "Ensure projects folder exists" || echo "Projects folder already committed"
+      - name: Ensure Projects Folder Exists
+        run: |
+          git fetch origin main
+          git checkout main
+          mkdir -p projects
+          git add projects
+          git commit -m "Ensure projects folder exists" || echo "Projects folder already committed"
 
-    - name: Copy Project from Orphan Branch
-      run: |
-        BRANCH_NAME=${{ github.event.inputs.branch_name }}
-        PROJECT_NAME=$(basename $BRANCH_NAME)
+      - name: Copy Project from Orphan Branch
+        run: |
+          BRANCH_NAME=${{ github.event.inputs.branch_name }}
+          PROJECT_NAME=$(basename $BRANCH_NAME)
 
-        # Checkout the orphan branch
-        git checkout $BRANCH_NAME
+          # Fetch the branch to ensure it exists
+          git fetch origin $BRANCH_NAME
 
-        # Create the project folder and move its contents
-        mkdir -p projects/$PROJECT_NAME
-        mv * projects/$PROJECT_NAME || echo "No files to move"
-        git add projects/$PROJECT_NAME
-        git commit -m "Prepare $PROJECT_NAME for merging into main" || echo "Already prepared"
+          # Checkout the orphan branch
+          git checkout $BRANCH_NAME
 
-        # Switch back to main and merge the project
-        git checkout main
-        git checkout $BRANCH_NAME -- projects/$PROJECT_NAME
-        git add projects/$PROJECT_NAME
-        git commit -m "Add $PROJECT_NAME project from $BRANCH_NAME"
-        git push origin main
+          # Create the project folder and move its contents
+          mkdir -p projects/$PROJECT_NAME
+          mv * projects/$PROJECT_NAME || echo "No files to move"
+          git add projects/$PROJECT_NAME
+          git commit -m "Prepare $PROJECT_NAME for merging into main" || echo "Already prepared"
+
+          # Switch back to main and merge the project
+          git checkout main
+          git checkout $BRANCH_NAME -- projects/$PROJECT_NAME
+          git add projects/$PROJECT_NAME
+          git commit -m "Add $PROJECT_NAME project from $BRANCH_NAME"
+          git push origin main
