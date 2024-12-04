@@ -1,49 +1,71 @@
-name: Merge Project to Main
+name: Copy Orphan Branch to Main Folder
 
 on:
   workflow_dispatch:
     inputs:
       branch_name:
-        description: "Branch to merge (e.g., assignment/multi-level-dropdowns)"
+        description: "Orphan branch to copy (e.g., project/todo-timer)"
         required: true
         default: ""
 
 jobs:
-  merge_project:
+  copy_orphan_branch:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Ensure Projects Folder Exists
+      - name: Configure Git Identity
+        run: |
+          git config --global user.email "faiyazkhan024@gmail.com"
+          git config --global user.name "Faiyaz Khan"
+
+      - name: Ensure Projects Folder Exists in Main
         run: |
           git fetch origin main
           git checkout main
           mkdir -p projects
-          git add projects
-          git commit -m "Ensure projects folder exists" || echo "Projects folder already committed"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add projects
+            git commit -m "Add projects folder"
+            git push origin main || echo "No changes to push"
+          else
+            echo "Projects folder already exists, no commit needed"
+          fi
 
-      - name: Copy Project from Orphan Branch
+      - name: Fetch the branch and switch
+        run: |
+          BRANCH_NAME=${{ github.event.inputs.branch_name }}
+          if ! git ls-remote --exit-code origin $BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME does not exist."
+            exit 1
+          fi
+
+          PROJECT_NAME=$(basename $BRANCH_NAME)
+
+          git fetch origin $BRANCH_NAME
+          git checkout $BRANCH_NAME
+
+      - name: Create the project folder and move its contents
         run: |
           BRANCH_NAME=${{ github.event.inputs.branch_name }}
           PROJECT_NAME=$(basename $BRANCH_NAME)
 
-          # Fetch the branch to ensure it exists
-          git fetch origin $BRANCH_NAME
-
-          # Checkout the orphan branch
-          git checkout $BRANCH_NAME
-
-          # Create the project folder and move its contents
           mkdir -p projects/$PROJECT_NAME
-          mv * projects/$PROJECT_NAME || echo "No files to move"
-          git add projects/$PROJECT_NAME
-          git commit -m "Prepare $PROJECT_NAME for merging into main" || echo "Already prepared"
+          shopt -s dotglob
+          mv -- * projects/$PROJECT_NAME || echo "No files to move"
+          shopt -u dotglob
+          git add projects/$PROJECT_NAME || echo "Nothing to add"
+          git commit -m "Prepare $PROJECT_NAME for merging into main" || echo "Commit already exists"
 
-          # Switch back to main and merge the project
+      - name: Switch back to main and merge the project
+        run: |
+          BRANCH_NAME=${{ github.event.inputs.branch_name }}
+          PROJECT_NAME=$(basename $BRANCH_NAME)
+
           git checkout main
           git checkout $BRANCH_NAME -- projects/$PROJECT_NAME
-          git add projects/$PROJECT_NAME
+          git add projects/$PROJECT_NAME || echo "Nothing to add"
           git commit -m "Add $PROJECT_NAME project from $BRANCH_NAME"
           git push origin main
