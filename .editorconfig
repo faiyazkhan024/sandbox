@@ -1,0 +1,35 @@
+# EditorConfig is awesome: https://editorconfig.org
+
+# Root project file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+
+# HTML files
+[*.html]
+
+# CSS files
+[*.css, *.scss, *.less]
+
+# JavaScript files
+[*.js]
+
+# Python files
+[*.py]
+
+# JSON files
+[*.json]
+
+# YAML files
+[*.yml, *.yaml]

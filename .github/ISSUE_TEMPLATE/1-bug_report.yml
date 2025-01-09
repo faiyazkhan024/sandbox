@@ -1,0 +1,169 @@
+name: 🐞 Bug Report
+description: Report a reproducible bug or issue in the project.
+title: "[Bug]: "
+labels: ["Type: Bug", "Status: Unconfirmed"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Bug or Error Report
+
+        Thank you for reporting a bug! Your input helps us improve the project. Please ensure the issue you are reporting is **related to this repository**.
+
+        **Before Submitting:**
+        - Search through [existing bug reports] to check if the issue has already been reported.
+        - If you find a similar issue, consider adding your information as a comment rather than opening a new report.
+        - Provide as much detail as possible so that we can reproduce and resolve the issue.
+
+        **Important Notes:**
+        - Provide a clear description of the bug, including steps to reproduce it.
+        - Include any relevant logs, screenshots, or videos to help with the investigation.
+        - Incomplete or unclear reports may be closed if they don’t provide enough information to proceed.
+
+        ---
+
+        Please fill out the form below to report the bug:
+
+  - type: input
+    id: project
+    attributes:
+      label: Project Name / Branch
+      placeholder: Enter the project name or branch.
+      description: Which project or branch are you experiencing the issue with?
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Bug Title
+      placeholder: Briefly describe the bug.
+      description: A short, clear title for the bug.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Provide a **clear and concise description** of the bug.
+
+        **Please avoid attaching ZIP files** of your code or compiled projects. Instead, publish your code in a **public GitHub repository** and share a link to it.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      placeholder: Describe the bug, including any relevant details.
+      description: A detailed explanation of the bug or issue.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error '...'
+      description: A step-by-step list to help us reproduce the bug.
+    validations:
+      required: true
+
+  - type: textarea
+    id: attachments
+    attributes:
+      label: Attachments (optional)
+      placeholder: Attach any images or videos here.
+      description: If possible, please provide any images or videos that may help us understand the issue.
+    validations:
+      required: false
+
+  - type: input
+    id: expected
+    attributes:
+      label: Expected Behavior
+      placeholder: Describe the expected behavior.
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: input
+    id: actual
+    attributes:
+      label: Actual Behavior
+      placeholder: Describe the actual behavior
+      description: What actually happens when the bug occurs?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Development
+        - Staging
+        - Production
+      description: Select the environment where the bug occurs.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: What platform(s) does this occur on?
+      multiple: true
+      options:
+        - iOS
+        - Android
+        - Web (Desktop)
+        - Web (Mobile)
+      description: Select the platforms where the bug occurs.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: What browser(s) does this occur on?
+      multiple: true
+      options:
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Opera
+        - Other
+      description: Select the browser where the bug occurs (if applicable)
+    validations:
+      required: false
+
+  - type: input
+    id: version
+    attributes:
+      label: What version are you using?
+      placeholder: e.g., v1.0.0
+      description: The version of the software where the bug occurred.
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or Console Output (optional)
+      placeholder: Paste relevant logs here (optional)
+      description: Add any relevant logs or console errors to help with debugging.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information (optional)
+      placeholder: Add any additional context or information here (optional)
+      description: Any other details that could help with the bug investigation.
+    validations:
+      required: false

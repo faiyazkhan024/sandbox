@@ -1,0 +1,113 @@
+name: 🔐 Security Report
+description: Report a security vulnerability in the project.
+title: "[Security]: "
+labels: ["security", "vulnerability"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Security Vulnerability Report
+
+        Thank you for taking the time to report a security vulnerability. We take security issues seriously and appreciate your help in making this project safer for everyone.
+
+        **Before Submitting:**
+        - Do not disclose vulnerabilities publicly until the issue has been addressed.
+        - Please ensure that the issue is **related to this project** and that all relevant details are included.
+        - If you are reporting a sensitive issue, you may reach out to the project maintainers directly.
+
+        **Important Notes:**
+        - Provide as much detail as possible about the vulnerability.
+        - Include steps to reproduce the issue and any affected versions or configurations.
+        - Do not share sensitive information or credentials publicly.
+
+        ---
+
+        Please fill in the form below to help us understand the security issue:
+
+  - type: input
+    id: project
+    attributes:
+      label: Project Name / Branch
+      placeholder: Enter the project name or branch
+      description: Which project or branch does this security vulnerability affect?
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: Vulnerability Title
+      placeholder: Briefly describe the vulnerability.
+      description: Provide a short, descriptive title for the vulnerability.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Vulnerability Description
+      placeholder: Describe the security issue in detail.
+      description: A detailed explanation of the security vulnerability, including how it can be exploited.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      placeholder: |
+        1. Do '...'
+        2. Follow this '...'
+        3. See issue '...'
+      description: Step-by-step instructions on how to reproduce the security vulnerability.
+    validations:
+      required: true
+
+  - type: input
+    id: impact
+    attributes:
+      label: Security Impact
+      placeholder: Describe the potential impact of the vulnerability.
+      description: What could happen if this issue is exploited? What is the severity of the vulnerability?
+    validations:
+      required: true
+
+  - type: input
+    id: affected_versions
+    attributes:
+      label: Affected Versions
+      placeholder: e.g., v1.0.0, v2.0.0
+      description: Specify which versions or configurations are affected by this vulnerability.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      options:
+        - Development
+        - Staging
+        - Production
+      description: Select the environment where the vulnerability was found.
+    validations:
+      required: true
+
+  - type: textarea
+    id: mitigation
+    attributes:
+      label: Suggested Mitigation (optional)
+      placeholder: Suggest how this issue could be fixed or mitigated.
+      description: If possible, provide suggestions on how to fix or reduce the impact of the vulnerability.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information (optional)
+      placeholder: Add any additional context or information here (optional)
+      description: Any other details that could help with addressing the vulnerability.
+    validations:
+      required: false

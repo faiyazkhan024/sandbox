@@ -1,0 +1,79 @@
+name: 🔧 Custom Request
+description: Submit a custom request for this project.
+title: "[Custom]: "
+labels: ["custom-request", "enhancement"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Custom Request
+
+        Thank you for submitting a custom request. This template is for any requests that do not fall under the standard categories like bugs, features, or support.
+
+        **Before Submitting:**
+        - Make sure this request is related to the project and that it cannot be categorized under existing templates (such as bug reports, feature requests, or support).
+        - Provide a clear and detailed explanation of your request.
+        - Include any relevant details, attachments, or context that can help us understand the custom request.
+
+        **Important Notes:**
+        - Ensure your request aligns with the goals and direction of the project.
+        - Attach any relevant links, screenshots, or examples that support your request.
+
+        ---
+
+        Please fill out the form below to submit your custom request:
+
+  - type: input
+    id: project
+    attributes:
+      label: Project Name / Branch
+      placeholder: Enter the project name or branch
+      description: Which project or branch does this request relate to?
+    validations:
+      required: true
+
+  - type: input
+    id: request_title
+    attributes:
+      label: Custom Request Title
+      placeholder: Briefly describe your custom request.
+      description: Provide a short, clear title for your request.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Custom Request Description
+      placeholder: Describe the custom request in detail.
+      description: Provide a detailed explanation of your request and why it’s important.
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: Purpose of the Request
+      placeholder: Explain the purpose or goal of the request.
+      description: What is the purpose of this custom request, and how will it benefit the project or its users?
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      placeholder: Describe the benefits of this custom request.
+      description: How will the project or users benefit from fulfilling this request?
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information (optional)
+      placeholder: Provide any additional context or information here (optional)
+      description: Any extra details that might help us understand and evaluate your custom request.
+    validations:
+      required: false

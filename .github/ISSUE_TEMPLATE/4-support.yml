@@ -1,0 +1,80 @@
+name: 💬 Support Request
+description: Request help or support related to the project.
+title: "[Support]: "
+labels: ["support", "question"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Support Request
+
+        Thank you for reaching out! This template is for requesting **help or support** related to this project.
+
+        **Before Submitting:**
+        - Please review the [documentation] and [FAQs] to check if your question has already been answered.
+        - If your issue is not directly related to this project or involves general programming questions, consider seeking help on forums like [Stack Overflow].
+        - Provide as much context and detail as possible to help us understand your request.
+
+        **Important Notes:**
+        - Clearly describe the problem or question you have.
+        - Include any relevant logs, screenshots, or details about the environment where the issue occurs.
+        - If the request is related to a specific project or branch, make sure to mention it.
+
+        ---
+
+        Please fill out the form below to request support:
+
+  - type: input
+    id: project
+    attributes:
+      label: Project Name / Branch
+      placeholder: Enter the project name or branch
+      description: Which project or branch is this support request for?
+    validations:
+      required: true
+
+  - type: input
+    id: issue_title
+    attributes:
+      label: Support Request Title
+      placeholder: Briefly describe the issue or question.
+      description: A short, clear title for your support request.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Support Request Description
+      placeholder: Describe the issue or question in detail.
+      description: Provide a detailed explanation of the support you need.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps Taken So Far
+      placeholder: Describe what you have already tried or investigated.
+      description: Let us know what steps you've already taken to resolve the issue.
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment (if applicable)
+      placeholder: e.g., Development, Staging, Production
+      description: Specify the environment where the issue occurs.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information (optional)
+      placeholder: Provide any additional context or information here (optional)
+      description: Any extra details or context that might help us better understand your support request.
+    validations:
+      required: false
