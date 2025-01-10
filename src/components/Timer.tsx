@@ -1,6 +1,6 @@
 import { FC, useRef, useState, useEffect } from "react";
 
-const Timer: FC<{
+export const Timer: FC<{
   time: number;
   onTimeOut: () => void;
 }> = ({ time, onTimeOut }) => {
@@ -27,4 +27,3 @@ const Timer: FC<{
 
   return <>{timer}s </>;
 };
-export default Timer;

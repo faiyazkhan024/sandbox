@@ -1,11 +1,17 @@
 import { FC } from "react";
 import { Button, ListGroup } from "react-bootstrap";
 
-import Timer from "./Timer";
-import useTodo from "../hooks/useTodo";
+import { Timer } from "./Timer";
+import { useTodo } from "../hooks/useTodo";
 import { differenceInSeconds, parseISO } from "date-fns";
 
-const TodoListItem: FC<Todo> = ({ id, task, expAt, isExpire, isComplete }) => {
+export const TodoListItem: FC<Todo> = ({
+  id,
+  task,
+  expAt,
+  isExpire,
+  isComplete,
+}) => {
   const { updateTodo, deleteTodo } = useTodo();
   const getTime = () => {
     if (isComplete) return 0;
@@ -52,5 +58,3 @@ const TodoListItem: FC<Todo> = ({ id, task, expAt, isExpire, isComplete }) => {
     </ListGroup.Item>
   );
 };
-
-export default TodoListItem;

@@ -1,10 +1,10 @@
 import { FC } from "react";
 import { ListGroup } from "react-bootstrap";
 
-import TodoListItem from "./TodoListItem";
-import useTodo from "../hooks/useTodo";
+import { TodoListItem } from "./TodoListItem";
+import { useTodo } from "../hooks/useTodo";
 
-const TodoList: FC = () => {
+export const TodoList: FC = () => {
   const { todos } = useTodo();
 
   return (
@@ -15,4 +15,3 @@ const TodoList: FC = () => {
     </ListGroup>
   );
 };
-export default TodoList;

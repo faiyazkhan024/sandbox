@@ -2,7 +2,7 @@ import { FC, FormEvent } from "react";
 import { Button, Form } from "react-bootstrap";
 import { addSeconds } from "date-fns";
 
-import useTodo from "../hooks/useTodo";
+import { useTodo } from "../hooks/useTodo";
 
 export const AddTodo: FC = () => {
   const { createTodo } = useTodo();
