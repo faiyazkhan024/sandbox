@@ -1,11 +1,20 @@
 import { FC, FormEvent } from "react";
 import { Button, Form } from "react-bootstrap";
+import { addSeconds } from "date-fns";
+
+import useTodo from "../hooks/useTodo";
 
 export const AddTodo: FC = () => {
+  const { createTodo } = useTodo();
+
   const submitHandler = (event: FormEvent) => {
     event.preventDefault();
     const target = event.target as HTMLFormElement;
     if (target.todo.value.trim() === "") return (target.todo.value = "");
+    createTodo({
+      task: target.todo.value,
+      expAt: addSeconds(new Date(), target.expAt.value),
+    });
     target.reset();
   };
 
