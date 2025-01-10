@@ -1,0 +1,21 @@
+.appBar {
+  margin: 1.1rem max(1rem, (100vw - 1200px) / 2) 0;
+  border-bottom: 1px solid var(--primary-900);
+}
+
+.appBar > * {
+  margin-bottom: 0.8rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.subtitle {
+  color: var(--secondary-700);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
