@@ -1,5 +1,8 @@
 import { FC } from "react";
+
 import AppBar from "./components/AppBar";
+import Form from "./components/Form";
+import Menu from "./components/Menu";
 import { MenuContextProvider } from "./contexts/MenuContext";
 
 const App: FC = () => {
@@ -8,7 +11,8 @@ const App: FC = () => {
       <AppBar />
       <main className="main">
         <MenuContextProvider>
-          <div></div>
+          <Form />
+          <Menu />
         </MenuContextProvider>
       </main>
     </>
