@@ -1,7 +1,12 @@
 import { FC } from "react";
+import { AddTodo } from "./components/AddTodo";
 
 const App: FC = () => {
-  return <h1>Todo Timer</h1>;
+  return (
+    <>
+      <AddTodo />
+    </>
+  );
 };
 
 export default App;
