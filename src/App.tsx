@@ -1,7 +1,18 @@
 import { FC } from "react";
+import AppBar from "./components/AppBar";
+import { MenuContextProvider } from "./contexts/MenuContext";
 
 const App: FC = () => {
-  return <h1>Multi-Level Dropdowns</h1>;
+  return (
+    <>
+      <AppBar />
+      <main className="main">
+        <MenuContextProvider>
+          <div></div>
+        </MenuContextProvider>
+      </main>
+    </>
+  );
 };
 
 export default App;
