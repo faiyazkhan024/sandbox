@@ -1,0 +1,36 @@
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.select {
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  border: 1px solid var(--secondary-700);
+  border-radius: var(--border-radius);
+  appearance: none;
+  background-image: var(--arrow-down);
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1rem;
+}
+
+.select:focus {
+  outline: none;
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 10px 0 var(--accent);
+}
+
+.select:invalid {
+  color: var(--secondary);
+}
+
+.select option {
+  color: var(--secondary-700);
+}

@@ -1,0 +1,7 @@
+.list {
+  display: flex;
+  color: var(--secondary);
+  background-color: var(--secondary-100);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 10px 0 var(--secondary-300);
+}
