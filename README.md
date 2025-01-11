@@ -1,5 +1,7 @@
 # Sandbox
 
+![Sandbox Banner](./assets/sandbox.png)
+
 **Sandbox** is a curated collection of diverse programming projects I’ve developed while exploring new languages, frameworks, tools, and concepts. The repository is structured to demonstrate a variety of skills, from solving coding challenges to implementing tutorials and building fun, small-scale projects.
 
 Each project exists in its own isolated environment by using **orphan branches**, ensuring a clean and organized structure. This setup highlights my ability to work with different technologies and approaches without interference between projects.
