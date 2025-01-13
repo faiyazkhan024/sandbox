@@ -1,6 +1,4 @@
 import { useContext } from "react";
-import MenuContext from "../contexts/MenuContext";
+import MenuContext from "src/contexts/MenuContext";
 
-const useMenu = () => useContext(MenuContext);
-
-export default useMenu;
+export const useMenu = () => useContext(MenuContext);

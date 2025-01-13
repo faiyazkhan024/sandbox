@@ -3,7 +3,7 @@ import { FC } from "react";
 import { SubMenu } from "./SubMenu";
 import List from "../core/List";
 import ListItem from "../core/ListItem";
-import useMenu from "../../hooks/useMenu";
+import { useMenu } from "src/hooks/useMenu";
 
 import classes from "./Menu.module.css";
 

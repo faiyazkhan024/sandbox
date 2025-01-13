@@ -7,8 +7,8 @@ import {
   MenuPayload,
   MenuReducer,
   RecursiveAddMenu,
-} from "../interfaces/menu-context";
-import initialState from "../data/dropdownMenu";
+} from "src/interfaces/menu-context";
+import initialState from "src/data/dropdownMenu";
 
 const recursiveAddMenu: RecursiveAddMenu = (menuList, parentID, newMenu) => {
   return menuList.map((menu) => {

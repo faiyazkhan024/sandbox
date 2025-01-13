@@ -1,9 +1,9 @@
 import { FC } from "react";
 
-import AppBar from "./components/AppBar";
-import Form from "./components/Form";
-import Menu from "./components/Menu";
-import { MenuContextProvider } from "./contexts/MenuContext";
+import AppBar from "src/components/AppBar";
+import Form from "src/components/Form";
+import Menu from "src/components/Menu";
+import { MenuContextProvider } from "src/contexts/MenuContext";
 
 const App: FC = () => {
   return (

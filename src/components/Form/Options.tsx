@@ -4,7 +4,7 @@ interface OptionsProps {
   options?: Array<MultiLevelDropdown>;
 }
 
-const Options: FC<OptionsProps> = ({ options }) => {
+export const Options: FC<OptionsProps> = ({ options }) => {
   if (!options) return null;
 
   return (
@@ -18,5 +18,3 @@ const Options: FC<OptionsProps> = ({ options }) => {
     </>
   );
 };
-
-export default Options;

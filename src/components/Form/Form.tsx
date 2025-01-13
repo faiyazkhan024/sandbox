@@ -1,10 +1,10 @@
 import { FC, FormEvent } from "react";
 
-import Options from "./Options";
+import { Options } from "./Options";
 import Input from "../core/Input";
 import Select from "../core/Select";
 import Button from "../core/Button";
-import useMenu from "../../hooks/useMenu";
+import { useMenu } from "src/hooks/useMenu";
 
 import classes from "./Form.module.css";
 
