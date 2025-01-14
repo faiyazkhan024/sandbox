@@ -1,7 +1,9 @@
 import { FC } from "react";
 
+import { Header } from "./components/Header/Header";
+
 const App: FC = () => {
-  return <h1>React Cropper</h1>;
+  return <Header setImgUrl={() => {}} />;
 };
 
 export default App;
