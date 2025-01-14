@@ -4,11 +4,28 @@ import "cropperjs/dist/cropper.css";
 
 import floorPlan from "./assets/floor-plan.png";
 import { Header } from "./components/Header/Header";
+import { Sidebar } from "./components/Sidebar/Sidebar";
 import classes from "./App.module.css";
 
 export const App: FC = () => {
   const cropperRef = useRef<ReactCropperElement>(null);
   const [imgUrl, setImgUrl] = useState(floorPlan);
+  const [preview, setPreview] = useState("");
+  const [cropData, setCropData] = useState({
+    x: 0,
+    y: 0,
+    width: 0,
+    height: 0,
+  });
+
+  const onCrop = () => {
+    const cropper = cropperRef.current?.cropper;
+    if (typeof cropper === "undefined") return;
+    setPreview(cropper.getCroppedCanvas()?.toDataURL());
+    setCropData({
+      ...cropper.getData(),
+    });
+  };
 
   return (
     <>
@@ -19,6 +36,7 @@ export const App: FC = () => {
           <Cropper
             ref={cropperRef}
             src={imgUrl}
+            crop={onCrop}
             viewMode={1}
             guides={false}
             dragMode="move"
@@ -28,6 +46,8 @@ export const App: FC = () => {
             checkOrientation={false}
           />
         </main>
+
+        <Sidebar preview={preview} cropData={cropData} />
       </div>
     </>
   );
