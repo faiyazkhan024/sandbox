@@ -71,7 +71,7 @@
           name="search"
           type="search"
           placeholder="| Search our library, e.g. Learn React"
-          class="px-6 py-4 w-full text-base lg:text-xl border-2 border-gray-200 focus:border-[#07a5fe] rounded-lg shadow-lg outline-none"
+          class="px-6 py-4 w-full text-base lg:text-xl border-2 border-[#ebf3f6] focus:border-[#07a5fe] rounded-lg shadow-lg outline-none"
         />
         <div class="w-20 h-2 bg-[#50caff] absolute -left-10 -bottom-4"></div>
       </section>
@@ -131,10 +131,10 @@
       <!-- Latest Content -->
       <section
         id="latest-content"
-        class="pt-10 h-screen flex flex-col md:flex-row items-center gap-8 md:gap-14"
+        class="md:h-screen flex flex-col md:flex-row items-center gap-4 md:gap-14"
       >
         <div
-          class="min-w-fit flex flex-row md:flex-col justify-between items-center gap-5 md:gap-0"
+          class="min-w-fit flex flex-row md:flex-col justify-between items-center md:items-start gap-5 md:gap-0"
         >
           <div class="md:space-y-4">
             <h2 class="font-bold text-xl md:text-2xl lg:text-4xl">
@@ -152,7 +152,9 @@
         </div>
 
         <!-- Lecture List -->
-        <div class="pb-4 flex flex-col md:flex-row gap-10 md:overflow-x-auto">
+        <div
+          class="pb-5 flex flex-col md:flex-row gap-10 md:overflow-x-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300"
+        >
           <!-- Card 1 -->
           <article
             class="px-8 pt-14 pb-12 md:min-w-[22rem] max-w-sm bg-white rounded-2xl space-y-10"
@@ -175,11 +177,11 @@
             </p>
             <div class="flex gap-4">
               <span
-                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-[#9bb7c7] bg-[#ebf3f6] rounded-lg"
                 >Laravel</span
               >
               <span
-                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-[#9bb7c7] bg-[#ebf3f6] rounded-lg"
                 >Vuex</span
               >
             </div>
@@ -212,11 +214,11 @@
             </p>
             <div class="flex gap-4">
               <span
-                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-[#9bb7c7] bg-[#ebf3f6] rounded-lg"
                 >Laravel</span
               >
               <span
-                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-[#9bb7c7] bg-[#ebf3f6] rounded-lg"
                 >Flutter</span
               >
             </div>
@@ -249,11 +251,11 @@
             </p>
             <div class="flex gap-4">
               <span
-                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-[#9bb7c7] bg-[#ebf3f6] rounded-lg"
                 >Laravel</span
               >
               <span
-                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-[#9bb7c7] bg-[#ebf3f6] rounded-lg"
                 >Vuex</span
               >
             </div>
@@ -264,6 +266,27 @@
             </button>
           </article>
         </div>
+      </section>
+
+      <!-- Unlimited Access Plan -->
+      <section
+        id="unlimited-plan"
+        class="px-8 md:px-24 lg:px-32 py-8 md:py-16 flex flex-col md:flex-row justify-between gap-6 md:gap-10 bg-[#0197e9] rounded-xl"
+      >
+        <div class="space-y-4 md:space-y-8 text-white md:max-w-96">
+          <h2 class="font-bold text-lg md:text-2xl lg:text-4xl leading-normal">
+            Unlimited access to everything with pro membership.
+          </h2>
+          <p class="text-xs md:text-sm lg:text-base">
+            For the price of a few coffees a month you get access to our entire
+            library of content, and more.
+          </p>
+        </div>
+        <button
+          class="px-4 md:px-10 py-2 md:py-4 font-medium text-sm md:text-base lg:text-xl bg-white text-[#0197e9] rounded-lg shadow hover:shadow-lg active:shadow-inner place-self-center whitespace-nowrap"
+        >
+          See Plans
+        </button>
       </section>
     </main>
   </body>
