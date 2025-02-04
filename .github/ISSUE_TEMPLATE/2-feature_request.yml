@@ -1,0 +1,104 @@
+name: 💡 Feature Request
+description: Suggest a new feature or enhancement for the project.
+title: "[Feature]: "
+labels: [feature-request, enhancement]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Request Submission
+
+        Thank you for taking the time to contribute by suggesting a new feature or enhancement! Please ensure you have checked for existing feature requests before submitting a new one, as consolidating requests can help us prioritize and track improvements more efficiently.
+
+        **Before Submitting:**
+        - Search through [existing feature requests] to see if a similar request already exists.
+        - If you find one that aligns with your suggestion, consider adding a comment or your input to that request instead of opening a new one.
+        - Be clear and concise about the feature you're proposing to ensure it aligns with the project's goals and can be discussed effectively.
+
+        **Important Notes:**
+        - Provide as much detail as possible about the feature, including the problem it solves and the potential use cases.
+        - Feel free to attach images or screenshots for clarity where applicable.
+        - Make sure to describe alternative approaches or related suggestions if relevant.
+
+        ---
+
+        Please fill in the form below to help us better understand and evaluate your feature request:
+
+  - type: input
+    id: project
+    attributes:
+      label: Project Name / Branch
+      placeholder: Enter the project name or branch
+      description: Which project or branch is this feature request for?
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Feature Name
+      placeholder: Enter a name for the feature.
+      description: Provide a short, descriptive name for the feature.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      placeholder: Explain the feature and how it should work.
+      description: Describe the feature in detail, including its purpose, functionality, and expected behavior.
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem_solved
+    attributes:
+      label: Problem Solved
+      placeholder: Describe the problem this feature addresses.
+      description: What specific problem does this feature aim to solve? Why is it necessary or valuable?
+    validations:
+      required: true
+
+  - type: input
+    id: use_cases
+    attributes:
+      label: Use Cases
+      placeholder: List 2-3 potential use cases
+      description: Provide real-world scenarios in which this feature would be useful.
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Benefits
+      placeholder: Describe the benefits of implementing this feature.
+      description: How will the project and its users benefit from the addition of this feature?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Attachments (optional)
+      description: You can attach screenshots, diagrams, or videos that illustrate how this feature works or where it fits into the project.
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe Alternatives (optional)
+      description: Are there any other solutions or alternatives that you think might work instead of the proposed feature? Please describe them here.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional_info
+    attributes:
+      label: Additional Information (optional)
+      placeholder: Provide any additional information or context.
+      description: Any extra details or context that might help us better understand your feature request.
+    validations:
+      required: false

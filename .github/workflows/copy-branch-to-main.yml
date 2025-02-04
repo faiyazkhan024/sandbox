@@ -1,0 +1,147 @@
+name: "Copy Orphan Branch to Main with Project Management"
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: "Orphan branch to copy"
+        required: true
+        default: ""
+
+env:
+  GIT_EMAIL: "faiyazkhan024@gmail.com"
+  GIT_NAME: "Faiyaz Khan"
+  REPO_URL: https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+  MAIN_BRANCH: "main"
+  PROJECTS_DIR: "projects"
+
+jobs:
+  copy_orphan_branch:
+    if: github.ref == 'refs/heads/main' # Restrict workflow to run only on the main branch
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Validate the branch name input
+      - name: Validate Branch Name
+        run: |
+          if [ "${{ github.ref }}" != "refs/heads/main" ]; then
+            echo "This workflow can only be run from the main branch."
+            exit 1
+          fi
+
+          if [ -z "${{ github.event.inputs.branch_name }}" ]; then
+            echo "Error: branch_name input is required but was not provided."
+            exit 1
+          fi
+
+      # Step 2: Log Workflow Variables (for debugging purposes)
+      - name: Log Workflow Variables
+        run: |
+          echo "Branch Name: ${{ github.event.inputs.branch_name }}"
+          echo "Main Branch: ${{ env.MAIN_BRANCH }}"
+          echo "Projects Directory: ${{ env.PROJECTS_DIR }}"
+
+      # Step 3: Checkout Repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 4: Configure Git Identity
+      - name: Configure Git Identity
+        run: |
+          git config --global user.email "${{ env.GIT_EMAIL }}"
+          git config --global user.name "${{ env.GIT_NAME }}"
+
+      # Step 5: Ensure Projects Folder Exists in Main
+      - name: Ensure Projects Folder Exists in Main
+        run: |
+          PROJECT_DIR=${{ env.PROJECTS_DIR }}
+          MAIN_BRANCH=${{ env.MAIN_BRANCH }}
+
+          git fetch origin $MAIN_BRANCH
+          git checkout $MAIN_BRANCH
+
+          mkdir -p $PROJECT_DIR
+          if [ -n "$(git status --porcelain)" ]; then
+            git add $PROJECT_DIR
+            git commit -m "Add $PROJECT_DIR folder"
+            git push origin $MAIN_BRANCH || echo "No changes to push"
+          else
+            echo "$PROJECT_DIR folder already exists, no commit needed"
+          fi
+
+      # Step 6: Fetch and Checkout the Orphan Branch
+      - name: Fetch and Checkout the Orphan Branch
+        run: |
+          BRANCH_NAME=${{ github.event.inputs.branch_name }}
+          if ! git ls-remote --exit-code origin $BRANCH_NAME; then
+            echo "Branch $BRANCH_NAME does not exist."
+            exit 1
+          fi
+
+          # Fetch the branch to ensure it exists
+          git fetch origin $BRANCH_NAME
+          git checkout $BRANCH_NAME
+
+      # Step 7: Handle Uncommitted Changes (Optional)
+      - name: Handle Uncommitted Changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "Uncommitted changes detected. Stashing changes."
+            git stash
+          fi
+
+      # Step 8: Create the Project Folder and Move Files
+      - name: Create the Project Folder and Move Files
+        run: |
+          BRANCH_NAME=${{ github.event.inputs.branch_name }}
+          PROJECT_NAME=$(basename $BRANCH_NAME)
+          PROJECT_DIR=${{ env.PROJECTS_DIR }}
+
+          # Create the project folder
+          mkdir -p $PROJECT_DIR/$PROJECT_NAME
+
+          # Enable extended globbing and move the files (excluding '.git' and the project directory itself)
+          shopt -s dotglob extglob
+          mv -- !(.git|$PROJECT_DIR) $PROJECT_DIR/$PROJECT_NAME || echo "No files to move"
+          shopt -u extglob
+
+          # Add the changes and commit them
+          git add $PROJECT_DIR/$PROJECT_NAME || echo "Nothing to add"
+          git commit -m "Prepare $PROJECT_NAME for merging into $MAIN_BRANCH" || echo "Commit already exists"
+
+      # Step 9: Switch Back to Main and Merge the Project
+      - name: Switch Back to Main and Merge the Project
+        run: |
+          BRANCH_NAME=${{ github.event.inputs.branch_name }}
+          PROJECT_NAME=$(basename $BRANCH_NAME)
+          PROJECT_DIR=${{ env.PROJECTS_DIR }}
+          MAIN_BRANCH=${{ env.MAIN_BRANCH }}
+
+          # Checkout main branch
+          git checkout $MAIN_BRANCH
+
+          # Check if the project folder exists
+          if [ -d "$PROJECT_DIR/$PROJECT_NAME" ]; then
+            echo "Project folder $PROJECT_DIR/$PROJECT_NAME already exists. Updating..."
+            rm -rf $PROJECT_DIR/$PROJECT_NAME
+            ACTION="Update"
+          else
+            echo "Project folder $PROJECT_DIR/$PROJECT_NAME does not exist. Creating..."
+            ACTION="Add"
+          fi
+
+          # Set the commit message
+          COMMIT_MSG="$ACTION $PROJECT_NAME project from branch $BRANCH_NAME"
+
+          # Merge the project
+          git checkout $BRANCH_NAME -- $PROJECT_DIR/$PROJECT_NAME
+          git add $PROJECT_DIR/$PROJECT_NAME || echo "Nothing to add"
+          git commit -m "$COMMIT_MSG" || echo "Commit already exists"
+
+          # Use GitHub Token for authentication
+          git push ${{ env.REPO_URL }} $MAIN_BRANCH
+
+      # Step 10: Clean Up and Final Logging
+      - name: Final Cleanup
+        run: |
+          echo "Workflow completed successfully."
