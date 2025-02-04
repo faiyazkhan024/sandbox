@@ -15,13 +15,13 @@
   </head>
   <body class="max-w-screen-xl mx-auto text-[#243640] bg-[#f7f9f9]">
     <!-- Page Header (AppBar) -->
-    <header id="app-bar" class="px-10 py-6 flex justify-between">
+    <header id="app-bar" class="px-6 py-4 flex justify-between">
       <!-- Navigation -->
       <nav class="flex items-center gap-12">
         <a href="#">
           <img class="w-14 aspect-square" src="./assets/logo.png" alt="logo" />
         </a>
-        <ul class="flex gap-8 font-medium">
+        <ul class="hidden invisible md:visible md:flex md:gap-8 md:font-medium">
           <li><a href="#library">Library</a></li>
           <li><a href="#latest-content">Subjects</a></li>
           <li><a href="#featured-content">Paths</a></li>
@@ -29,7 +29,7 @@
       </nav>
 
       <!-- Action Buttons -->
-      <div class="flex gap-4 items-center">
+      <div class="hidden invisible md:visible md:flex md:gap-4 md:items-center">
         <button
           class="px-6 py-3 font-medium rounded-lg shadow hover:shadow-lg active:shadow-inner"
         >
@@ -41,6 +41,13 @@
           Join Pro
         </button>
       </div>
+
+      <!-- Menu Bar -->
+      <button
+        class="p-4 text-2xl rounded-full shadow hover:shadow-lg active:shadow-inner flex items-center md:hidden md:invisible"
+      >
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </header>
 
     <!-- Page Main -->
@@ -48,13 +55,13 @@
       <!-- Hero -->
       <section
         id="hero"
-        class="min-h-[calc(100vh-110px)] text-center flex flex-col items-center justify-center gap-8 relative"
+        class="min-h-[calc(100vh-104px)] text-center flex flex-col items-center justify-center gap-8 relative"
       >
-        <h1 class="text-6xl font-bold">
+        <h1 class="font-bold text-2xl sm:text-4xl md:text-6xl">
           Ready to build <br />
           something awesome?
         </h1>
-        <p class="text-xl font-medium text-[#799eb1]">
+        <p class="text-sm sm:text-base md:text-xl font-medium text-[#799eb1]">
           We create practical screencasts for awesome developers.
         </p>
         <input
@@ -62,25 +69,28 @@
           name="search"
           type="search"
           placeholder="| Search our library, e.g. Learn React"
-          class="px-6 py-4 min-w-[45rem] w-3/4 text-xl border-2 border-gray-200 rounded-lg shadow-lg focus:border-[[#07a5fe]] outline-none"
+          class="px-6 py-4 w-full text-xl border-2 border-gray-200 rounded-lg shadow-lg focus:border-[#07a5fe] outline-none"
         />
-        <div class="w-20 h-2 bg-[#50caff] absolute left-0 bottom-0"></div>
+        <div class="w-20 h-2 bg-[#50caff] absolute -left-10 -bottom-4"></div>
       </section>
 
       <!-- Library -->
-      <section id="library" class="py-16 flex justify-between gap-12">
+      <section
+        id="library"
+        class="py-16 flex justify-between gap-12 flex-col lg:flex-row"
+      >
         <div class="space-y-6">
-          <h2 class="text-4xl font-bold">
+          <h2 class="font-bold text-xl sm:text-2xl md:text-4xl">
             Practical project to get you ahead.
           </h2>
-          <p class="text-xl font-medium text-[#799eb1]">
+          <p class="font-medium text-[#799eb1] text-sm sm:text-base md:text-xl">
             Rather than just teaching theory, we focus on real code to inspire
             your next project. Learning should be boring so let's have some fun.
           </p>
         </div>
 
         <button
-          class="px-6 py-3 font-medium rounded-lg shadow hover:shadow-lg active:shadow-inner text-white bg-gradient-to-r from-[#07a5fe] to-[#0197e9] btn-2xl place-self-end whitespace-nowrap"
+          class="font-medium rounded-lg shadow hover:shadow-lg active:shadow-inner text-white bg-gradient-to-r from-[#07a5fe] to-[#0197e9] btn-2xl place-self-end whitespace-nowrap p-4 text-base md:px-10 md:text-xl lg:px-12 lg:py-6 lg:text-2xl"
           onclick="document.getElementById('search').focus()"
         >
           <i class="fa fa-magnifying-glass"></i>
