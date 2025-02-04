@@ -13,7 +13,7 @@
     <link rel="icon" type="image/x-icon" href="./public/favicon.ico" />
     <title>Hailcabs Coding Challenge 1</title>
   </head>
-  <body class="max-w-screen-xl mx-auto text-gray-800 bg-gray-100">
+  <body class="max-w-screen-xl mx-auto text-[#243640] bg-[#f7f9f9]">
     <!-- Page Header (AppBar) -->
     <header id="app-bar" class="px-10 py-6 flex justify-between">
       <!-- Navigation -->
@@ -42,5 +42,30 @@
         </button>
       </div>
     </header>
+
+    <!-- Page Main -->
+    <main class="px-10 space-y-4">
+      <!-- Hero -->
+      <section
+        id="hero"
+        class="min-h-[calc(100vh-110px)] text-center flex flex-col items-center justify-center gap-8 relative"
+      >
+        <h1 class="text-6xl font-bold">
+          Ready to build <br />
+          something awesome?
+        </h1>
+        <p class="text-xl font-medium text-[#799eb1]">
+          We create practical screencasts for awesome developers.
+        </p>
+        <input
+          id="search"
+          name="search"
+          type="search"
+          placeholder="| Search our library, e.g. Learn React"
+          class="px-6 py-4 min-w-[45rem] w-3/4 text-xl border-2 border-gray-200 rounded-lg shadow-lg focus:border-[[#07a5fe]] outline-none"
+        />
+        <div class="w-20 h-2 bg-[#50caff] absolute left-0 bottom-0"></div>
+      </section>
+    </main>
   </body>
 </html>
