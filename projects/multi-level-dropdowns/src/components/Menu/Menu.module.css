@@ -1,0 +1,43 @@
+.nav li:has(ul) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav li:has(ul)::after {
+  content: " ";
+  height: 5px;
+  width: 5px;
+  display: block;
+  border-style: solid;
+  border-color: var(--secondary-300);
+  border-width: 0px 2px 2px 0px;
+  transform: translateY(-1px) rotate(45deg);
+}
+
+.nav li:has(ul):hover::after {
+  content: " ";
+  border-color: var(--accent);
+}
+
+.nav ul ul {
+  display: none;
+}
+
+.nav ul ul li {
+  min-width: max-content;
+  border-bottom: 1px solid var(--secondary-300);
+}
+
+.nav li:hover > ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  z-index: 10;
+}
+
+.nav li:hover > ul ul {
+  top: 0;
+  left: 100%;
+}

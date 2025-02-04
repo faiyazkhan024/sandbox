@@ -1,0 +1,10 @@
+.listItem {
+  padding: 1rem 2rem;
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+}
+
+.listItem:hover {
+  color: var(--accent);
+}
