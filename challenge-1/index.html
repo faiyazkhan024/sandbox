@@ -13,7 +13,9 @@
     <link rel="icon" type="image/x-icon" href="./public/favicon.ico" />
     <title>Hailcabs Coding Challenge 1</title>
   </head>
-  <body class="mx-auto max-w-screen-xl text-[#243640] bg-[#f7f9f9]">
+  <body
+    class="mx-auto max-w-screen-xl text-[#243640] bg-[#f7f9f9] overflow-x-hidden"
+  >
     <!-- Page Header (AppBar) -->
     <header id="app-bar" class="px-6 py-4 flex justify-between items-center">
       <!-- Navigation -->
@@ -51,17 +53,17 @@
     </header>
 
     <!-- Page Main -->
-    <main class="px-10 space-y-4">
+    <main class="px-6 md:px-8 lg:px-10 space-y-4">
       <!-- Hero -->
       <section
         id="hero"
         class="min-h-[calc(100vh-104px)] flex flex-col items-center justify-center text-center gap-8 relative"
       >
-        <h1 class="font-bold text-2xl sm:text-4xl md:text-6xl">
+        <h1 class="font-bold text-2xl md:text-4xl lg:text-6xl">
           Ready to build <br />
           something awesome?
         </h1>
-        <p class="font-medium text-sm sm:text-base md:text-xl text-[#799eb1]">
+        <p class="font-medium text-sm md:text-base lg:text-xl text-[#799eb1]">
           We create practical screencasts for awesome developers.
         </p>
         <input
@@ -69,7 +71,7 @@
           name="search"
           type="search"
           placeholder="| Search our library, e.g. Learn React"
-          class="px-6 py-4 w-full text-xl border-2 border-gray-200 focus:border-[#07a5fe] rounded-lg shadow-lg outline-none"
+          class="px-6 py-4 w-full text-base lg:text-xl border-2 border-gray-200 focus:border-[#07a5fe] rounded-lg shadow-lg outline-none"
         />
         <div class="w-20 h-2 bg-[#50caff] absolute -left-10 -bottom-4"></div>
       </section>
@@ -80,10 +82,10 @@
         class="py-16 flex flex-col lg:flex-row justify-between gap-12"
       >
         <div class="space-y-6">
-          <h2 class="font-bold text-xl sm:text-2xl md:text-4xl">
+          <h2 class="font-bold text-xl md:text-2xl lg:text-4xl">
             Practical project to get you ahead.
           </h2>
-          <p class="font-medium text-sm sm:text-base md:text-xl text-[#799eb1]">
+          <p class="font-medium text-sm md:text-base lg:text-xl text-[#799eb1]">
             Rather than just teaching theory, we focus on real code to inspire
             your next project. Learning should be boring so let's have some fun.
           </p>
@@ -123,6 +125,144 @@
           <p class="text-[#799eb1] font-light text-xs md:text-sm lg:text-lg">
             Josh Stobbs, Ontario, Canada anvildesigne.ca
           </p>
+        </div>
+      </section>
+
+      <!-- Latest Content -->
+      <section
+        id="latest-content"
+        class="pt-10 h-screen flex flex-col md:flex-row items-center gap-8 md:gap-14"
+      >
+        <div
+          class="min-w-fit flex flex-row md:flex-col justify-between items-center gap-5 md:gap-0"
+        >
+          <div class="md:space-y-4">
+            <h2 class="font-bold text-xl md:text-2xl lg:text-4xl">
+              Latest Content
+            </h2>
+            <p
+              class="font-medium text-sm md:text-base lg:text-xl text-slate-400"
+            >
+              Fresh from the library
+            </p>
+          </div>
+          <button class="my-8 text-base md:text-xl lg:text-2xl text-blue-500">
+            Browse everything <i class="fa fa-arrow-right-long"></i>
+          </button>
+        </div>
+
+        <!-- Lecture List -->
+        <div class="pb-4 flex flex-col md:flex-row gap-10 md:overflow-x-auto">
+          <!-- Card 1 -->
+          <article
+            class="px-8 pt-14 pb-12 md:min-w-[22rem] max-w-sm bg-white rounded-2xl space-y-10"
+          >
+            <div>
+              <span
+                class="font-bold text-xs md:text-sm lg:text-base text-blue-500 uppercase"
+                >Pro only</span
+              >
+              <h4
+                class="text-base md:text-xl lg:text-2xl text-gray-800 font-bold"
+              >
+                Super Fast Data Nesting
+              </h4>
+            </div>
+            <p class="font-medium text-slate-400 text-sm md:text-base">
+              Nesting huge amount of data like comments? Here's a unique
+              technique combining API data and frontend logic to make it a
+              breeze.
+            </p>
+            <div class="flex gap-4">
+              <span
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                >Laravel</span
+              >
+              <span
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                >Vuex</span
+              >
+            </div>
+            <button
+              class="px-6 md:px-8 lg:px-10 py-2 md:py-4 lg:py-6 font-medium text-base lg:text-xl text-white bg-gradient-to-r from-[#07a5fe] to-[#0197e9] w-full flex justify-between items-center rounded-lg shadow hover:shadow-lg active:shadow-inner"
+            >
+              Watch Now <i class="fa-solid fa-circle-play"></i>
+            </button>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="px-8 pt-14 pb-12 md:min-w-[22rem] max-w-sm bg-white rounded-2xl space-y-10"
+          >
+            <div>
+              <span
+                class="font-bold text-xs md:text-sm lg:text-base text-blue-500 uppercase"
+                >Pro only</span
+              >
+              <h4
+                class="text-base md:text-xl lg:text-2xl text-gray-800 font-bold"
+              >
+                API Requests with Flutter
+              </h4>
+            </div>
+            <p class="font-medium text-slate-400 text-sm md:text-base">
+              Get started making API requests in Flutter. We'll cover simple
+              requests working with models and extracting HTTP logic to a
+              dedicated web service class.
+            </p>
+            <div class="flex gap-4">
+              <span
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                >Laravel</span
+              >
+              <span
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                >Flutter</span
+              >
+            </div>
+            <button
+              class="px-6 md:px-8 lg:px-10 py-2 md:py-4 lg:py-6 font-medium text-base lg:text-xl text-white bg-gradient-to-r from-[#07a5fe] to-[#0197e9] w-full flex justify-between items-center rounded-lg shadow hover:shadow-lg active:shadow-inner"
+            >
+              Watch Now <i class="fa-solid fa-circle-play"></i>
+            </button>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="px-8 pt-14 pb-12 md:min-w-[22rem] max-w-sm bg-white rounded-2xl space-y-10"
+          >
+            <div>
+              <span
+                class="font-bold text-xs md:text-sm lg:text-base text-blue-500 uppercase"
+                >Pro only</span
+              >
+              <h4
+                class="text-base md:text-xl lg:text-2xl text-gray-800 font-bold"
+              >
+                Super Fast Data Nesting
+              </h4>
+            </div>
+            <p class="font-medium text-slate-400 text-sm md:text-base">
+              Nesting huge amount of data like comments? Here's a unique
+              technique combining API data and frontend logic to make it a
+              breeze.
+            </p>
+            <div class="flex gap-4">
+              <span
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                >Laravel</span
+              >
+              <span
+                class="px-3 py-1 font-medium text-sm md:text-base lg:text-lg text-slate-500 bg-gray-200 rounded-lg"
+                >Vuex</span
+              >
+            </div>
+            <button
+              class="px-6 md:px-8 lg:px-10 py-2 md:py-4 lg:py-6 font-medium text-base lg:text-xl text-white bg-gradient-to-r from-[#07a5fe] to-[#0197e9] w-full flex justify-between items-center rounded-lg shadow hover:shadow-lg active:shadow-inner"
+            >
+              Watch Now <i class="fa-solid fa-circle-play"></i>
+            </button>
+          </article>
         </div>
       </section>
     </main>
