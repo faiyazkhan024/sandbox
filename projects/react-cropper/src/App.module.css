@@ -1,0 +1,11 @@
+.app {
+  padding: 1rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.canvas {
+  flex-basis: 816px;
+}
